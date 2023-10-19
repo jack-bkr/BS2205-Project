@@ -1,6 +1,6 @@
-#BS2205 - Web and Mobile Application Development
+# BS2205 - Web and Mobile Application Development
 
-##Summative Portfolio Project
+## Summative Portfolio Project
 
 Based on previous college project https://github.com/jack-bkr/MechanicsSystemCoursework
 
