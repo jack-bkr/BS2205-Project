@@ -40,10 +40,26 @@
                 <h1 class=" text-light">Welcome!</h1>
             </div>
             <p class="text-body">This is gonna be a bumpy ride.</p>
+            <button id="getData" type="button" class="btn btn-primary" onclick="javascript:getData()">Get Data</button>  
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">name</th>
+                        <th scope="col">handle</th>
+                    </tr>
+                    <tr>
+                        <th scope="row">1</th>
+                        <th id="n1">n1</th>
+                        <th id="h1">h1</th>
+                    </tr>
+                </thead>
+            </table>
         </body>
     </div>
     <script src="/js/jquery.min.js"></script>
     <script src="/js/bootstrap.bundle.js"></script>
+    <script src="/public/js/index.js" ></script>
     <script>
         $(document).ready(function(){
             $('.dropdown-toggle').dropdown()
