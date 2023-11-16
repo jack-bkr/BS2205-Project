@@ -1,10 +1,10 @@
 const express = require('express');
-apiController = require('../controllers/item')
+itemController = require('../controllers/item')
 const mainRouter = express.Router();
 
-mainRouter.get('/', apiController.getItems);
+mainRouter.get('/item', itemController.getItems);
 
-mainRouter.post('/', apiController.createItem);
+mainRouter.post('/item', itemController.createItem);
 
 module.exports = mainRouter;
 
