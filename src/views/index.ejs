@@ -45,17 +45,14 @@
             </div>
             <p class="text-body">This is gonna be a bumpy ride.</p>
             <button id="getData" type="button" class="btn btn-primary" onclick="javascript:getItem()" ontouchstart="javascript:getItem()">Get Data</button>  <!-- Get Data from MongoDB using API -->
-            <table class="table">
+            <button id="addData" type="button" class="btn btn-primary" onclick="javascript:addItem()" ontouchstart="javascript:addItem()">Add Data</button>  <!-- Insert Data to MongoDB using API -->
+            <button id="delData" type="button" class="btn btn-primary" onclick="javascript:delItem()" ontouchstart="javascript:delItem()">Delete Data</button>  <!-- Delete Data from MongoDB using API -->
+            <table id="table1" class="table">
                 <thead>
                     <tr>
                         <th scope="col">#</th>
                         <th scope="col">name</th>
                         <th scope="col">handle</th>
-                    </tr>
-                    <tr>
-                        <th scope="row">1</th>
-                        <th id="n1">n1</th>
-                        <th id="h1">h1</th>
                     </tr>
                 </thead>
             </table>

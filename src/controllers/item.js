@@ -30,3 +30,17 @@ exports.getItems = (req, res, next) => {
         })
     });
 }
+
+exports.delItem = (req, res, next) => {
+    // get name of item to remove
+    const itemName = req.body.name;
+
+    // find item by name and remove
+    Item.deleteOne({ name: itemName }).then(itemDeleted => {
+        res.json({
+            message: "Item deleted",
+            item: itemDeleted
+        })
+    });
+
+}
