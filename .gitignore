@@ -1,9 +1,6 @@
 # MongoDB URL
 dbURL.json
 
-# Azure
-.deployment
-
 # Logs
 logs
 *.log
