@@ -38,15 +38,15 @@
             
             
         </nav>
-    <div class=" ">
+    <div>
         <body class=" text-center">
             <div class="bg-primary rounded-bottom-4">
                 <h1 class=" text-light">Welcome!</h1>
             </div>
-            <p class="text-body">This is gonna be a bumpy ride.</p>
-            <button id="getData" type="button" class="btn btn-primary" onclick="javascript:getItem()" ontouchstart="javascript:getItem()">Get Data</button>  <!-- Get Data from MongoDB using API -->
-            <button id="addData" type="button" class="btn btn-primary" onclick="javascript:addItem()" ontouchstart="javascript:addItem()">Add Data</button>  <!-- Insert Data to MongoDB using API -->
-            <button id="delData" type="button" class="btn btn-primary" onclick="javascript:delItem()" ontouchstart="javascript:delItem()">Delete Data</button>  <!-- Delete Data from MongoDB using API -->
+            <p class="text-body">Storefront</p>
+            <!-- <button id="getData" type="button" class="btn btn-primary" onclick="javascript:getItem()" ontouchstart="javascript:getItem()">Get Data</button>
+            <button id="addData" type="button" class="btn btn-primary" onclick="javascript:addItem()" ontouchstart="javascript:addItem()">Add Data</button>  
+            <button id="delData" type="button" class="btn btn-primary" onclick="javascript:delItem()" ontouchstart="javascript:delItem()">Delete Data</button>  
             <table id="table1" class="table">
                 <thead>
                     <tr>
@@ -55,8 +55,17 @@
                         <th scope="col">handle</th>
                     </tr>
                 </thead>
-            </table>
+            </table> 
+            -->
         </body>
+    </div>
+    <div>
+        <% for( let index = 0; index < items.length; index++ ) { %>
+            <figure class="figure border border-2 border-primary rounded">
+                <img src="/public/img/<%= items[index]._id %>.png" alt="<%= items[index].name %>" class="figure-img img-fluid m-1" width="200px" height="200px">
+                <figcaption class="figure-caption m-1"><%= items[index].name %></figcaption>
+                <button type="button" class="btn btn-primary m-1">Add to basket</button>
+        <% } %>
     </div>
     <script src="/js/jquery.min.js"></script>
     <script src="/js/bootstrap.bundle.js"></script>

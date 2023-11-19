@@ -1,12 +1,14 @@
 const express = require('express');
 itemController = require('../controllers/item')
-const mainRouter = express.Router();
+const apiRouter = express.Router();
 
-mainRouter.get('/item', itemController.getItems);
+apiRouter.get('/item', itemController.getItems);
 
-mainRouter.post('/item', itemController.createItem);
+apiRouter.get('/itemid', itemController.getIDs); // Test
 
-mainRouter.delete('/item', itemController.delItem);
+apiRouter.post('/item', itemController.createItem);
 
-module.exports = mainRouter;
+apiRouter.delete('/item', itemController.delItem);
+
+module.exports = apiRouter;
 

@@ -3,11 +3,13 @@ const Item = require('../models/item');
 exports.createItem = (req, res, next) => {
     // get item data from request
     const name = req.body.name;
-    const handle = req.body.handle;
+    const description = req.body.description;
+    const price = req.body.price;
     // create new item instance
     const item = new Item({
         name: name,
-        handle: handle
+        description: description,
+        price: price
     })
     // save instance to database
     item
@@ -43,4 +45,13 @@ exports.delItem = (req, res, next) => {
         })
     });
 
+}
+
+exports.getIDs = (req, res, next) => { 
+    Item.find().then(foundItems => {
+        res.json({
+            message: "All items",
+            items: foundItems.map(item => item._id)
+        })
+    });
 }

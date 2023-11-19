@@ -2,6 +2,6 @@
 
 ## Summative Portfolio Project
 
-Based on previous college project https://github.com/jack-bkr/MechanicsSystemCoursework
+Basic Storefront with basic login, admin and checkout functionality.
 
 .gitignore for Node from https://github.com/github/gitignore
