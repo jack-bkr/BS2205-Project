@@ -4,7 +4,7 @@
         <meta name="viewport" class="width=device-width, initial-size=1, maximum-scale=1, user-scalable=no">
         <link href="/css/bootstrap.min.css" rel="stylesheet">
         <!-- <link rel="stylesheet" href="/public/css/styles.css"> -->
-        <title>Storefront</title>
+        <title>Items</title>
     </head>
         <nav class=" navbar navbar-inverse navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
             <div class="navbar-header">
@@ -41,30 +41,12 @@
     <div>
         <body class=" text-center">
             <div class="bg-primary rounded-bottom-4">
-                <h1 class=" text-light">Welcome!</h1>
+                <h1 class=" text-light">Items</h1>
             </div>
-            <p class="text-body">Storefront</p>
-            <!-- <button id="getData" type="button" class="btn btn-primary" onclick="javascript:getItem()" ontouchstart="javascript:getItem()">Get Data</button>
-            <button id="addData" type="button" class="btn btn-primary" onclick="javascript:addItem()" ontouchstart="javascript:addItem()">Add Data</button>  
-            <button id="delData" type="button" class="btn btn-primary" onclick="javascript:delItem()" ontouchstart="javascript:delItem()">Delete Data</button>  
-            <table id="table1" class="table">
-                <thead>
-                    <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">name</th>
-                        <th scope="col">handle</th>
-                    </tr>
-                </thead>
-            </table> 
-            -->
         </body>
     </div>
     <div>
-        <% 
-        const homeItems = items.length;
-        if (items.length > 5) { const homeItems = 5 };
-           
-        for( let index = 0; index < homeItems; index++ ) { %>
+        <% for( let index = 0; index < items.length; index++ ) { %>
             <figure class="figure border border-2 border-primary rounded">
                 <img src="/public/img/<%= items[index]._id %>.png" alt="<%= items[index].name %>" class="figure-img img-fluid m-1" width="200px" height="200px">
                 <figcaption class="figure-caption m-1"><%= items[index].name %></figcaption>

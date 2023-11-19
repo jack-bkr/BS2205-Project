@@ -1,10 +1,12 @@
 const Item = require('../models/item');
+const path = require('path');
 
 exports.createItem = (req, res, next) => {
     // get item data from request
     const name = req.body.name;
     const description = req.body.description;
     const price = req.body.price;
+    const image = req.files.image;
     // create new item instance
     const item = new Item({
         name: name,
@@ -15,6 +17,13 @@ exports.createItem = (req, res, next) => {
     item
         .save()
         .then(itemSaved => {
+            // upload image to server
+            const filePath = path.join(__dirname, `../../public/img/${itemSaved._id}.png`)
+  
+            image.mv(filePath, err => {
+                if (err) return console.log(err);
+            });
+            
             res.status(201).json({
                 message: 'Item created successfully!',
                 item: itemSaved

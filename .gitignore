@@ -1,6 +1,9 @@
 # MongoDB URL
 dbURL.json
 
+# vscode
+.vscode
+
 # Logs
 logs
 *.log
