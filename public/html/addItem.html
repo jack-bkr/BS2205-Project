@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Add Item</title>
+        <title>Add Item</title> 
+        <link href="/css/bootstrap.min.css" rel="stylesheet">
     </head>
     <div>
-        <h1>Add Item</h1>
+        <h1 class="text-dark m-1">Add Item</h1>
+        <button class="btn btn-secondary m-1" onclick="window.location.href='/'">Home</button>
+        <button class="btn btn-secondary m-1" onclick="window.location.href='/items'">Items</button>
         <script>
             function submitForm() {
                 document.itemForm.submit();
@@ -12,17 +15,24 @@
             }
         </script>
         <form action="/api/item" method="POST" enctype="multipart/form-data" name="itemForm" target="formRes">
-            <label for="name">Name</label>
-            <input type="text" id="name" name="name" required>
-            <label for="description">Description</label>
-            <input type="text" id="description" name="description" required>
-            <label for="price">Price</label>
-            <input type="number" id="price" name="price" required>
-            <label for="image">Image</label>
-            <input type="file" id="image" name="image" required>
-            <button type="button" onclick="submitForm()">Add Item</button>
+            <div class="form-group m-1">
+                <label for="name">Name</label>
+                <input class="form-control" type="text" id="name" name="name" placeholder="Name" required>
+            </div>
+            <div class="form-group m-1">
+                <label for="description">Description</label>
+                <input class="form-control" type="text" id="description" name="description" placeholder="Description" required>
+            </div>
+            <div class="form-group m-1">
+                <label for="price">Price (£)</label>
+                <input class="form-control" type="number" id="price" name="price" placeholder="£10.00" required>
+            <div class="form-group m-1">
+                <label for="image">Image</label>
+                <input class="form-control" type="file" id="image" name="image" required>
+            </div>
+            <button class="btn btn-secondary m-1" type="button" onclick="submitForm()">Add Item</button>
         </form>
         <p>Response:</p>
-        <iframe name="formRes" width="800px"></iframe>
+        <iframe class="iframe" name="formRes" width="800px"></iframe>
     </div>
 </html>
