@@ -1,5 +1,6 @@
 const Item = require('../models/item');
 const path = require('path');
+const mongoose = require('mongoose');
 
 exports.createItem = (req, res, next) => {
     // get item data from request
@@ -66,10 +67,16 @@ exports.getIDs = (req, res, next) => {
 }
 
 exports.getItemByID = (req, res, next) => {
-    Item.findById(req.params.id).then(foundItem => {
-        res.json({
-            message: "Item found",
-            item: foundItem
-        })
-    });
+    const isValidId = mongoose.Types.ObjectId.isValid(req.params.id)
+
+    if (!isValidId) {
+        return res.status(404).send({ message: "Item not found" }) // check if id is valid
+    } else {
+        Item.findById(req.params.id).then(foundItem => {
+            res.json({
+                message: "Item found",
+                item: foundItem
+            })
+        });
+    }
 }
