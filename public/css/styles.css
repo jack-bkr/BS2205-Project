@@ -1,3 +1,7 @@
 .hover-shadow:hover{
     box-shadow: 5px 5px 5px lightgray,-5px 5px 5px lightgray,5px -5px 5px lightgray, -5px -5px 5px lightgray;
 }
+
+.add-items{
+    min-width: 500px;
+}

@@ -16,8 +16,12 @@
             </div>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link" href="/items/add">Add Items</a>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown">Add Items</a>
+                        <ul class="dropdown-menu add-items">
+                            <li><iframe class="dropdown-item" src="/items/add" title="Add Item" height="500px"></iframe></li>
+                            
+                        </ul>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -50,7 +54,7 @@
     <div>
         <% for( let index = 0; index < items.length; index++ ) { %>
             <figure class="figure m-1 rounded-4 hover-shadow">
-                <img src="/public/img/<%= items[index]._id %>.png" alt="<%= items[index].name %>" class="figure-img m-1" width="300px" height="300px">
+                <img src="https://jackbkr-bs2205.azurewebsites.net/public/img/<%= items[index]._id %>.png" alt="<%= items[index].name %>" class="figure-img m-1" width="300px" height="300px">
                 <figcaption class="figure-caption m-1 fs-4"><%= items[index].name %></figcaption>
                 <button type="button" class="btn btn-secondary m-1">Add to basket</button>
             </figure>
