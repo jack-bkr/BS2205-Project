@@ -6,6 +6,8 @@ apiRouter.get('/item', itemController.getItems);
 
 apiRouter.get('/itemid', itemController.getIDs); // Test
 
+apiRouter.get('/item/:id', itemController.getItemByID);
+
 apiRouter.post('/item', itemController.createItem);
 
 apiRouter.delete('/item', itemController.delItem);

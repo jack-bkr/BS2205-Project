@@ -64,3 +64,12 @@ exports.getIDs = (req, res, next) => {
         })
     });
 }
+
+exports.getItemByID = (req, res, next) => {
+    Item.findById(req.params.id).then(foundItem => {
+        res.json({
+            message: "Item found",
+            item: foundItem
+        })
+    });
+}
