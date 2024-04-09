@@ -4,7 +4,7 @@
         <meta name="viewport" content="width=device-width, initial-size=1, maximum-scale=1, user-scalable=no">
         <link href="/css/bootstrap.min.css" rel="stylesheet">
         <link rel="stylesheet" href="/public/css/styles.css">
-        <title>Items</title>
+        <title><%= item.name %></title>
     </head>
     <nav class="navbar navbar-expand-lg bg-body-secondary">
         <div class="container-fluid">
@@ -16,12 +16,8 @@
             </div>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown">Add Items</a>
-                        <ul class="dropdown-menu add-items">
-                            <li><iframe class="dropdown-item" src="/items/add" title="Add Item" height="500px"></iframe></li>
-                            
-                        </ul>
+                    <li class="nav-item ">
+                        <a class="nav-link " role="button" href="/items">Items</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -47,24 +43,29 @@
     <div>
         <body class=" text-center">
             <div class="bg-primary rounded-bottom-4">
-                <h1 class=" text-light">Items</h1>
+                <h1 class="text-light"><%= item.name %></h1>
             </div>
         </body>
     </div>
-    <div>
-        <% for( let index = 0; index < items.length; index++ ) { %>
-            <figure class="figure m-1 rounded-4 hover-shadow">
-                <a href="/items/<%= items[index]._id %>">
-                    <img src="https://jackbkr-bs2205.azurewebsites.net/public/img/<%= items[index]._id %>.png" alt="<%= items[index].name %>" class="figure-img m-1" width="300px" height="300px">
-                </a>
-                <figcaption class="figure-caption m-1 fs-4"><%= items[index].name %></figcaption>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-auto d-none d-md-block">
+                <img src="https://jackbkr-bs2205.azurewebsites.net/public/img/<%= item._id %>.png" alt="<%= item.name %>" class="m-1" width="400px" height="400px">
+            </div>
+            <div class="col">
+                <div class="row d-block d-md-none ">
+                    <img src="https://jackbkr-bs2205.azurewebsites.net/public/img/<%= item._id %>.png" alt="<%= item.name %>" class="m-1" width="device-width">
+                </div>
+                <div class="row fs-4 m-1">Description</div>
+                <div class="row m-1"><%= item.description %></div>
+                <div class="row m-1 fw-bold">£<%= item.price %></div>
                 <button type="button" class="btn btn-secondary m-1">Add to basket</button>
-            </figure>
-        <% }; %>
+            </div>
+        </div>
     </div>
     <script src="/js/jquery.min.js"></script>
     <script src="/js/bootstrap.bundle.js"></script>
-    <script src="/public/js/index.js" ></script>
+    <script src="/public/js/viewItem.js" ></script>
     <script>
         $(document).ready(function(){
             $('.dropdown-toggle').dropdown()
