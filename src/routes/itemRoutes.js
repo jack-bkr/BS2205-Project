@@ -5,6 +5,9 @@ const path = require('path');
 const dbURL = require('../../dbURL.json');
 
 async function checkAdmin(req) {
+    if (!req.headers.cookie) {
+        return false;
+    }
     cookies = req.headers.cookie.split('; ');
     for (let i = 0; i < cookies.length; i++) {
         if (cookies[i].includes('user')) {

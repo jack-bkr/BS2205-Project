@@ -2,6 +2,9 @@ const User = require('../models/user');
 const mongoose = require('mongoose');
 
 async function checkAdmin(req) {
+    if (!req.headers.cookie) {
+        return false;
+    }
     cookies = req.headers.cookie.split('; ');
 
     for (let i = 0; i < cookies.length; i++) {
