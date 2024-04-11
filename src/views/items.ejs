@@ -9,19 +9,21 @@
     <nav class="navbar navbar-expand-lg bg-body-secondary">
         <div class="container-fluid">
             <div class="navbar-header">
-                <button type="button" class="d-md-block d-lg-none navbar-toggle" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <a href="/" class="d-none d-lg-block navbar-brand">Home</a>
+                <a href="/" class="navbar-brand">Home</a>
             </div>
+            <button type="button" class="d-md-block d-lg-none navbar-toggle float-right" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
+                <span class="navbar-toggler-icon"></span>
+            </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item dropdown">
+                        <% if (isAdmin) { %>
                         <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown">Add Items</a>
                         <ul class="dropdown-menu add-items">
                             <li><iframe class="dropdown-item" src="/items/add" title="Add Item" height="500px"></iframe></li>
                             
                         </ul>
+                        <% } %>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="" role="button" data-bs-toggle="dropdown" aria-expanded="false">

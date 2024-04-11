@@ -9,11 +9,11 @@
     <nav class="navbar navbar-expand-lg bg-body-secondary">
         <div class="container-fluid">
             <div class="navbar-header">
-                <button type="button" class="d-md-block d-lg-none navbar-toggle" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <a href="/" class="d-none d-lg-block navbar-brand">Home</a>
+                <a href="/" class="navbar-brand">Home</a>
             </div>
+            <button type="button" class="d-md-block d-lg-none navbar-toggle float-right" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
+                <span class="navbar-toggler-icon"></span>
+            </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
@@ -76,6 +76,8 @@
             </figure>
         <% }; %>
     </div>
+    <button type="button" class="btn btn-primary" onclick="javascript:document.cookie='user=6617f7949b3d3b42fdfc6637'">Set user Cookie</button>
+    <button type="button" class="btn btn-primary" onclick="javascript:document.cookie='user=6617f5f5d556bd259e918143'">Set admin Cookie</button>
     <script src="/js/jquery.min.js"></script>
     <script src="/js/bootstrap.bundle.js"></script>
     <script src="/public/js/index.js" ></script>

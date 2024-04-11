@@ -5,6 +5,7 @@ const path = require('path');
 const debug = require('debug')('app');
 const morgan = require('morgan');
 const mongoose = require('mongoose');
+const cookieParser = require('cookie-parser');
 const dbURL = require('./dbURL.json');
 const apiRoutes = require('./src/routes/apiRoutes');
 const index = require('./src/routes/index');
