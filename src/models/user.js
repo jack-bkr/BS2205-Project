@@ -14,10 +14,6 @@ const userSchema = new Schema({
     admin: {
         type: Boolean,
         required: true
-    },
-    basket: {
-        type: [String],
-        required: true
     }
 })
 

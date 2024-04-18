@@ -41,7 +41,6 @@ exports.createUser = async (req, res, next) => {
     const username = req.body.username;
     const password = req.body.password;
     const admin = req.body.admin;
-    const basket = req.body.basket;
 
     // create new user instance
 
@@ -49,7 +48,6 @@ exports.createUser = async (req, res, next) => {
         username: username,
         password: password,
         admin: admin,
-        basket: basket
     })
     // Check if username already exists
     userExists = await checkForExistingUser(req);

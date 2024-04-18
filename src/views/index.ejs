@@ -46,19 +46,6 @@
                 <h1 class="h-1 text-light">Welcome!</h1>
             </div>
             <p class="text-body fs-4">Storefront</p>
-            <!-- <button id="getData" type="button" class="btn btn-primary" onclick="javascript:getItem()" ontouchstart="javascript:getItem()">Get Data</button>
-            <button id="addData" type="button" class="btn btn-primary" onclick="javascript:addItem()" ontouchstart="javascript:addItem()">Add Data</button>  
-            <button id="delData" type="button" class="btn btn-primary" onclick="javascript:delItem()" ontouchstart="javascript:delItem()">Delete Data</button>  
-            <table id="table1" class="table">
-                <thead>
-                    <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">name</th>
-                        <th scope="col">handle</th>
-                    </tr>
-                </thead>
-            </table> 
-            -->
         </body>
     </div>
     <div>
@@ -72,7 +59,6 @@
                     <img src="https://jackbkr-bs2205.azurewebsites.net/public/img/<%= items[index]._id %>.png" alt="<%= items[index].name %>" class="figure-img m-1" width="300px" height="300px">
                 </a>
                 <figcaption class="figure-caption m-1 fs-4"><%= items[index].name %></figcaption>
-                <button type="button" class="btn btn-secondary m-1">Add to basket</button>
             </figure>
         <% }; %>
     </div>
