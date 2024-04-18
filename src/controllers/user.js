@@ -93,19 +93,17 @@ exports.login = async (req, res, next) => {
 
 }
 
-exports.checkAdmin = async (req, res, next) => {
-    user = await User.findById(req.params.id).exec();
-    isAdmin = user.admin;
+exports.getUser = async (req, res, next) => {
+    const isValidId = mongoose.Types.ObjectId.isValid(req.params.id)
 
-    if (isAdmin == true) {
-        res.status(200).json({
-            message: 'Admin',
-            admin: true
-        })
+    if (!isValidId) {
+        return res.status(404).send({ message: "Item not found" }) // check if id is valid
     } else {
-        res.status(403).json({
-            message: 'Forbidden',
-            admin: false
+        await User.findById(userID).then(foundUsers => {
+            res.status(200).json({
+                username: foundUsers.username,
+                admin: foundUsers.admin
+            })
         })
     }
 }

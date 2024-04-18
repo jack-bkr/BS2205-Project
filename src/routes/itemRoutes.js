@@ -4,7 +4,7 @@ const path = require('path');
 
 const dbURL = require('../../dbURL.json');
 
-async function checkAdmin(req) {
+async function checkUser(req) {
     if (!req.headers.cookie) {
         return false;
     }
@@ -18,23 +18,16 @@ async function checkAdmin(req) {
     userURL = dbURL.site + "/api/user/" + userID;
     const promise = await fetch(userURL);
     const response = await promise.json();
-    if (response.admin == true) {
-        isAdmin = true;
-    } else {
-        isAdmin = false;
-    }
-    
-
-    return isAdmin
+    return await [response.username, response.admin];
 }
 
 itemRouter.get('', async function (req, res) {  // get request to root path
-    isAdmin = await checkAdmin(req);
+    user = await checkUser(req);
     
     try {
         const promise = fetch(dbURL.site + "/api/item").then((response) => { // fetch data as promise from api
             return response.json().then((data) => {
-                data.isAdmin = isAdmin;
+                data.User = user;
                 res.render('../views/items.ejs', data);
             });
         });
@@ -45,22 +38,24 @@ itemRouter.get('', async function (req, res) {  // get request to root path
 });
 
 itemRouter.get('/add', async function (req, res) {  // get request to root path
-    isAdmin = await checkAdmin(req);
+    user = await checkUser(req);
 
-    if (isAdmin == true) {
+    if (user[1] == true) {
         res.sendFile(path.join(__dirname, '../../public/html/addItem.html'));
     } else {
         res.status(403).send({ message: "Forbidden" });
     }
 });
 
-itemRouter.get('/:id', function (req, res) {
+itemRouter.get('/:id', async function (req, res) {
+    user = await checkUser(req);
     try {
         const promise = fetch(dbURL.site + "/api/item/" + req.params.id).then((response) => {
             if (response.status === 404) {
                 res.status(404).send({ message: "Item not found" });
             }
             return response.json().then((data) => {
+                data.User = user;
                 res.render('../views/viewItem.ejs', data);
             });
         });

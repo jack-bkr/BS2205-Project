@@ -21,7 +21,7 @@ apiRouter.get('/user/login', userController.login);
 
 apiRouter.post('/user', userController.createUser);
 
-apiRouter.get('/user/:id', userController.checkAdmin);
+apiRouter.get('/user/:id', userController.getUser);
 
 module.exports = apiRouter;
 
