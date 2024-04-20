@@ -10,6 +10,8 @@ async function checkUser(req) {
     for (let i = 0; i < cookies.length; i++) {
         if (cookies[i].includes('user')) {
             userID = cookies[i].split('=')[1];
+        } else {
+            return false;
         }
     }
 
