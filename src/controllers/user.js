@@ -84,11 +84,13 @@ exports.login = async (req, res, next) => {
         for (let i = 0; i < foundUsers.length; i++) {
             if (foundUsers[i].username == username && foundUsers[i].password == password) {
                 res.cookie('user', foundUsers[i].id);
-                res.status(200).json({
-                    message: 'Logged in'
-                })
+                res.redirect("/");
+                return;
             }
         }
+        res.status(404).json({
+            message: 'Username/password incorrect'
+        })
     })
 
 }

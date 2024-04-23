@@ -17,7 +17,7 @@ apiRouter.delete('/item', itemController.delItem);
 
 // API user routes
 
-apiRouter.get('/user/login', userController.login);
+apiRouter.post('/user/login', userController.login);
 
 apiRouter.post('/user', userController.createUser);
 

@@ -16,8 +16,25 @@
                     <% if (!User) { %>
                     <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Login</button>
                     <ul class="dropdown-menu" style="min-width:200px;">
-                        <li><iframe class="dropdown-item" src="/login" title="Login" height="200px" width="300px"></iframe></li>
+                        <li><div>
+                            <form action="/api/user/login" method="POST" enctype="multipart/form-data" name="itemForm" id="itemFormSM">
+                                <div class="form-group m-1">
+                                    <label for="username">Username</label>
+                                    <input class="form-control" type="text" id="username" name="username" placeholder="Username" required>
+                                </div>
+                                <div class="form-group m-1">
+                                    <label for="password">Password</label>
+                                    <input class="form-control" type="text" id="password" name="password" placeholder="Password" required>
+                                </div>
+                                <button class="btn btn-secondary m-1" type="button" onclick="javascript:submitForm('itemFormSM')">Login</button>
+                            </form>
+                        </div></li>
                     </ul>
+                    <% } else { %>
+                        <div class="hstack gap-3 align-middle">
+                            <span>Hello, <%= User[0] %></span>
+                            <button type="button" class="btn btn-primary" onclick="javascript:logout()">Logout</button>
+                        </div>
                     <% } %>
                 </div>
                 <button type="button" class="navbar-toggle" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
@@ -40,8 +57,25 @@
                 <% if (!User) { %>
                 <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Login</button>
                 <ul class="dropdown-menu" style="min-width:200px;">
-                    <li><iframe class="dropdown-item" src="/login" title="Add Item" height="200px"></iframe></li>
+                    <li><div>
+                        <form action="/api/user/login" method="POST" enctype="multipart/form-data" name="itemForm" id="itemFormLG">
+                            <div class="form-group m-1">
+                                <label for="username">Username</label>
+                                <input class="form-control" type="text" id="username" name="username" placeholder="Username" required>
+                            </div>
+                            <div class="form-group m-1">
+                                <label for="password">Password</label>
+                                <input class="form-control" type="text" id="password" name="password" placeholder="Password" required>
+                            </div>
+                            <button class="btn btn-secondary m-1" type="button" onclick="javascript:submitForm('itemFormLG')">Login</button>
+                        </form>
+                    </div></li>
                 </ul>
+                <% } else { %>
+                    <div class="hstack gap-3 align-middle">
+                        <span>Hello, <%= User[0] %></span>
+                        <button type="button" class="btn btn-primary" onclick="javascript:logout()">Logout</button>
+                    </div>
                 <% } %>
             </div>
         </div>
@@ -57,7 +91,7 @@
         <% for( let index = 0; index < items.length; index++ ) { %>
             <figure class="figure m-1 rounded-4 hover-shadow">
                 <a href="/items/<%= items[index]._id %>">
-                    <img src="https://jackbkr-bs2205.azurewebsites.net/public/img/<%= items[index]._id %>.png" alt="<%= items[index].name %>" class="figure-img m-1" width="300px" height="300px">
+                    <img src="https://jackbkr-bs2205.azurewebsites.net/public/img/<%= items[index]._id %>.png" alt="<%= items[index].name %>" class="figure-img m-1" width="300px">
                 </a>
                 <figcaption class="figure-caption m-1 fs-4"><%= items[index].name %></figcaption>
             </figure>
