@@ -91,7 +91,7 @@
         <% for( let index = 0; index < items.length; index++ ) { %>
             <figure class="figure m-1 rounded-4 hover-shadow">
                 <a href="/items/<%= items[index]._id %>">
-                    <img src="https://jackbkr-bs2205.azurewebsites.net/public/img/<%= items[index]._id %>.png" alt="<%= items[index].name %>" class="figure-img m-1" width="300px">
+                    <img src="/public/img/image-placeholder.png" data-src="https://jackbkr-bs2205.azurewebsites.net/public/img/<%= items[index]._id %>.png" alt="<%= items[index].name %>" class="figure-img m-1" width="300px">
                 </a>
                 <figcaption class="figure-caption m-1 fs-4"><%= items[index].name %></figcaption>
             </figure>
