@@ -95,11 +95,18 @@
                 <div class="row m-1"><%= item.description %></div>
                 <div class="row m-1 fw-bold">£<%= item.price %></div>
             </div>
+            <% if (User[1]) { %>
+            <div class="col-auto">
+                <div class="row m-1">
+                    <button class="btn btn-danger" onclick="javascript:removeItem('<%= item._id %>')">Delete Item</button>
+                </div>
+            </div>
+            <% } %>
         </div>
     </div>
     <script src="/js/jquery.min.js"></script>
     <script src="/js/bootstrap.bundle.js"></script>
-    <script src="/public/js/viewItem.js" ></script>
+    <script src="/public/js/index.js" ></script>
     <script>
         $(document).ready(function(){
             $('.dropdown-toggle').dropdown()

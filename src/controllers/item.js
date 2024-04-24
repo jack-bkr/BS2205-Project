@@ -1,8 +1,30 @@
 const Item = require('../models/item');
+const User = require('../models/user');
 const path = require('path');
 const mongoose = require('mongoose');
+const fs = require('fs');
+
+async function checkAdmin(req) {
+    if (!req.headers.cookie) {
+        return false;
+    }
+    cookies = req.headers.cookie.split('; ');
+
+    for (let i = 0; i < cookies.length; i++) {
+        if (cookies[i].includes('user')) {
+            user = cookies[i].split('=')[1];
+        }
+    }
+
+    user = await User.findById(user).exec()
+    isAdmin = user.admin;
+
+    return isAdmin
+}
 
 exports.createItem = (req, res, next) => {
+    isAdmin = checkAdmin(req);
+
     // get item data from request
     const name = req.body.name;
     const description = req.body.description;
@@ -15,22 +37,28 @@ exports.createItem = (req, res, next) => {
         price: price
     })
     // save instance to database
-    item
-        .save()
-        .then(itemSaved => {
-            // upload image to server
-            const filePath = path.join(__dirname, `../../public/img/${itemSaved._id}.png`)
-  
-            image.mv(filePath, err => {
-                if (err) return console.log(err);
-            });
-            
-            res.status(201).json({
-                message: 'Item created successfully!',
-                item: itemSaved
-            });
+    if (isAdmin) {
+        item
+            .save()
+            .then(itemSaved => {
+                // upload image to server
+                const filePath = path.join(__dirname, `../../public/img/${itemSaved._id}.png`)
+    
+                image.mv(filePath, err => {
+                    if (err) return console.log(err);
+                });
+                
+                res.status(201).json({
+                    message: 'Item created successfully!',
+                    item: itemSaved
+                });
+            })
+            .catch(err => console.log('err', err));
+    } else {
+        res.status(403).json({
+            message: "Forbidden"
         })
-        .catch(err => console.log('err', err));
+    }
 }
 
 exports.getItems = (req, res, next) => {
@@ -44,17 +72,28 @@ exports.getItems = (req, res, next) => {
 }
 
 exports.delItem = (req, res, next) => {
+    isAdmin = checkAdmin(req);
+
     // get name of item to remove
-    const itemName = req.body.name;
+    const itemID = req.body.id;
+    imgPath = path.join(__dirname,`../../public/img/${itemID}.png`);
 
     // find item by name and remove
-    Item.deleteOne({ name: itemName }).then(itemDeleted => {
-        res.json({
-            message: "Item deleted",
-            item: itemDeleted
+    if (isAdmin) {
+        Item.findByIdAndDelete(itemID).then(itemDeleted => {
+            res.json({
+                message: "Item deleted",
+                item: itemDeleted
+            })
+            fs.rmSync(imgPath, {
+                force: true,
+            });
+        });
+    } else {
+        res.status(403).json({
+            message: "Forbidden"
         })
-    });
-
+    }
 }
 
 exports.getIDs = (req, res, next) => { 
