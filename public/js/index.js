@@ -77,3 +77,12 @@ if ('IntersectionObserver' in window) {
 
 // PWA service worker
 
+if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('/public/js/service-worker.js')
+        .then(reg => {
+            console.log('Service worker registered', reg);
+        })
+        .catch(err => {
+            console.log('Service worker not registered', err);
+        });
+}
